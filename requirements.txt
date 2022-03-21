@@ -1,5 +1,6 @@
 aiogram==2.19
 aiohttp==3.8.1
+pyrogram
 aiosignal==1.2.0
 altgraph==0.17.2
 async-timeout==4.0.2
@@ -37,6 +38,7 @@ pyinstaller==4.8
 pyinstaller-hooks-contrib==2021.5
 pymongo==4.0.2
 pytz==2021.3
+python-dotenv
 pywin32-ctypes==0.2.0
 requests==2.27.1
 tqdm==4.62.3
