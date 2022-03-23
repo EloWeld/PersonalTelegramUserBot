@@ -167,8 +167,12 @@ def ilyCMD(client: Client, message: Message) -> None:
 
 
 def dangerCMD(client: Client, message: Message) -> None:
+    speed = 1
     orig_text = message.text.split('.',maxsplit=1)[1]
-    for i in range(len(orig_text)):
+    if message.text[1] in "123456789":
+        orig_text = message.text[2:]
+        speed = int(message.text[1])
+    for i in range(0, len(orig_text), speed):
         s = " ░" if i % 2 else " ▓"
         message.edit(orig_text[:i + 1] + s)
         time.sleep(0.05)
@@ -176,11 +180,16 @@ def dangerCMD(client: Client, message: Message) -> None:
     time.sleep(0.2)
     message.edit(f"<i>{orig_text}</i>")
     time.sleep(0.2)
-    message.edit(f"<code>{orig_text}</code>")
-    time.sleep(0.2)
-    message.edit(f"<b>{orig_text}</b>")
+    for _ in range(10):
+        message.edit(f"<code>{orig_text}</code>")
+        time.sleep(2)
+        message.edit(f"<b>{orig_text}</b>")
+        time.sleep(4)
+
 
 def huiCMD(client: Client, message: Message, emoji="🍆") -> None:
+    if len(message.text.split(" ")) > 1 and message.text.split(" ")[1].isprintable():
+        emoji = message.text.split(" ")[1]
     message.edit("🍆🍆\n"
             "🍆🍆🍆\n"
             "  🍆🍆🍆\n"
